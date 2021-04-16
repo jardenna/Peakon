@@ -1,23 +1,23 @@
 import React from 'react';
 
 import { CONTENT } from '@common/constants/managerContent';
-import GithubContext from '@context/github/githubContext';
+import Context from '@context/managers/context';
 
 
 import Selectbox from '@formElements/Selectbox/Selectbox';
 
 
 const Index = () => {
-   const githubContext = React.useContext(GithubContext);
+   const context = React.useContext(Context);
 
-   const { users, loading, error } = githubContext;
+   const { users, loading, error } = context;
 
 
    React.useEffect(() => {
-      githubContext.getUsers();
+      context.getManagers();
    }, []);
 
-   const managers = githubContext.users;
+   const managers = context.users;
 
    const newManagerArray = managers.data && managers.data.map(manager => {
       //In order to find a conneced Id between managers.data and  manager.included

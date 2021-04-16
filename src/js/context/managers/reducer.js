@@ -1,25 +1,25 @@
 import {
-   SET_LOADING,
-   GET_USERS,
-   SET_ERROR
+   FETCH_LOADING,
+   FETCH_SUCCESS,
+   FETCH_ERROR
 } from '@context/types';
 
 export default (state, action) => {
 
    switch (action.type) {
-      case SET_LOADING:
+      case FETCH_LOADING:
          return {
             ...state,
             loading: true
          };
 
-      case SET_ERROR:
+      case FETCH_ERROR:
          return {
             ...state,
             loading: false,
             error: action.payload
          };
-      case GET_USERS:
+      case FETCH_SUCCESS:
          return {
             ...state,
             users: action.payload,

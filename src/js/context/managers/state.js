@@ -1,18 +1,18 @@
 import React, { useReducer } from 'react';
 
-import GithubContext from './githubContext';
-import GithubReducer from './githubReducer';
+import Context from './context';
+import Reducer from './reducer';
 
 import Endpoints from '@common/endpoints';
 
 import {
-   SET_LOADING,
-   GET_USERS,
-   SET_ERROR
+   FETCH_LOADING,
+   FETCH_SUCCESS,
+   FETCH_ERROR
 } from '../types';
 
 
-const GithubState = props => {
+const State = props => {
    const initialState = {
       users: {},
       loading: false,
@@ -20,13 +20,14 @@ const GithubState = props => {
    };
 
 
-   const [state, dispatch] = useReducer(GithubReducer, initialState);
+   const [state, dispatch] = useReducer(Reducer, initialState);
    //Set Loading
-   const setLoading = () => dispatch({ type: SET_LOADING });
-   const setError = () => dispatch({ type: SET_ERROR });
+   const setLoading = () => dispatch({ type: FETCH_LOADING });
+   const setError = () => dispatch({ type: FETCH_ERROR });
+
 
    //Initial Users
-   const getUsers = async () => {
+   const getManagers = async () => {
       const url = Endpoints.main;
       setLoading();
       try {
@@ -35,7 +36,7 @@ const GithubState = props => {
 
          if (response.ok) {
             dispatch({
-               type: GET_USERS,
+               type: FETCH_SUCCESS,
                payload: result
             });
 
@@ -48,18 +49,18 @@ const GithubState = props => {
 
 
    return (
-      <GithubContext.Provider value={{
+      <Context.Provider value={{
          users: state.users,
          loading: state.loading,
          error: state.error,
-         getUsers
+         getManagers
 
       }}>
          {props.children}
-      </GithubContext.Provider>
+      </Context.Provider>
    );
 
 
 };
 
-export default GithubState;
+export default State;

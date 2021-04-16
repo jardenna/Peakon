@@ -1,13 +1,13 @@
 import React from 'react';
 
 import ManagerDropdown from './managersDropdown/ManagerDropdown';
-import GithubState from '../context/github/GithubState';
+import State from '../context/managers/State';
 
 function App() {
    return (
-      <GithubState>
+      <State>
          <ManagerDropdown />
-      </GithubState>
+      </State>
    );
 }
 
