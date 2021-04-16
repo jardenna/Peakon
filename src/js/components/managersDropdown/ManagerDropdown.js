@@ -1,21 +1,23 @@
 import React from 'react';
 
 import { CONTENT } from '@common/constants/managerContent';
+import GithubContext from '@context/github/githubContext';
 
 
 import Selectbox from '@formElements/Selectbox/Selectbox';
 
-import useGlobalFetch from '@hooks/useGlobalFetch';
 
-
-const URL = 'https://gist.githubusercontent.com/daviferreira/41238222ac31fe36348544ee1d4a9a5e/raw/5dc996407f6c9a6630bfcec56eee22d4bc54b518/employees.json';
 const Index = () => {
+   const githubContext = React.useContext(GithubContext);
+
+   const { users, loading, error } = githubContext;
 
 
-   const { isLoading, hasError, result } = useGlobalFetch(URL, 'get');
+   React.useEffect(() => {
+      githubContext.getUsers();
+   }, []);
 
-
-   const managers = result ? result : [];
+   const managers = githubContext.users;
 
    const newManagerArray = managers.data && managers.data.map(manager => {
       //In order to find a conneced Id between managers.data and  manager.included
@@ -39,7 +41,7 @@ const Index = () => {
       );
    });
 
-   const man = newManagerArray && newManagerArray.map(elm => {
+   const managerOptions = newManagerArray && newManagerArray.map(elm => {
       let b = elm.name === 'New Manager' ? CONTENT.newManager : elm.name;
       return (
          { value: b, valueOne: elm.email }
@@ -54,7 +56,7 @@ const Index = () => {
 
             <Selectbox
                placeholder={CONTENT.chooseManager}
-               options={man}
+               options={managerOptions}
                name="managers"
                label={CONTENT.manager}
                input

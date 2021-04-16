@@ -21,9 +21,6 @@ function SelectBox({ options, label, multiple, placeholder, zIndex, callBack, in
 
 
 
-   // React.useEffect(() => {
-   //    callBack(selectValues);
-   // }, [selectValues]);
    return (
       <div>
 
@@ -54,9 +51,6 @@ function SelectBox({ options, label, multiple, placeholder, zIndex, callBack, in
                         input={input}
                      />
                }
-
-
-
 
                <span className={`chevron ${isOpen ? 'chevron-up' : 'chevron-down'}`} />
 
