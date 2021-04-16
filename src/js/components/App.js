@@ -1,11 +1,11 @@
 import React from 'react';
 
-//import ManagerDropdown from './managersDropdown/ManagerDropdown';
+import ManagerDropdown from './managersDropdown/ManagerDropdown';
 
 function App() {
    return (
       <div>
-         hello
+         <ManagerDropdown />
       </div>
    );
 }
