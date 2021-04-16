@@ -2,24 +2,7 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 100px white inset;
 }
 
-.manager-container {
 
-  input,
-  select,
-  textarea {
-    border: none;
-    margin: 0;
-    color: $color-primary;
-
-
-    &:focus {
-
-      box-shadow: 1px 1px 4px 3px rgba(38, 152, 155, 0.6);
-      background-color: $color-white;
-      color: $color-black;
-    }
-  }
-}
 
 form {
   position: relative;

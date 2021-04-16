@@ -4,6 +4,22 @@
    }
 }
 
+.icon {
+   &.rounded {
+      border-radius: 10px;
+   }
+}
+
+.icon-primary {
+   background-color: $color-green;
+   color: $color-white;
+}
+
+.icon-secondary {
+   background-color: $color-blue;
+   color: $color-white;
+}
+
 .value-wrapper {
    margin-right: 10px;
 }
@@ -81,13 +97,13 @@
    padding: 5px 10px;
 }
 
-.icon {
-   position: absolute;
-   top: 0;
-   right: 5px;
-   display: block;
-   padding: 10px;
-}
+// .icon {
+//    position: absolute;
+//    top: 0;
+//    right: 5px;
+//    display: block;
+//    padding: 10px;
+// }
 
 .options {
    position: absolute;

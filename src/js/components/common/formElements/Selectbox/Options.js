@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ManagerIcon from '@components/ManagerIcon';
+import Icon from '@components/Icon';
 import { CONTENT } from '@common/constants/managerContent';
 
 function Options({ multiple, isOpen, values, focusedValue, onClickOption, filteredOptions }) {
@@ -8,7 +8,6 @@ function Options({ multiple, isOpen, values, focusedValue, onClickOption, filter
    if (!isOpen) {
       return null;
    }
-   console.log(focusedValue);
    return (
       <ul className="options" role='listbox'>
 
@@ -26,12 +25,14 @@ function Options({ multiple, isOpen, values, focusedValue, onClickOption, filter
                      className={className}
                      onClick={() => onClickOption(value)}
                      aria-selected={selected ? true : null}
+                     data-selector="selectOptions"
                   >
                      {multiple &&
                         <span className={`checkbox ${selected ? 'icon-checkmark' : null}`} />
                      }
 
-                     <ManagerIcon content={value} />   {value} {valueOne}
+                     <Icon size={32} variant="primary" shape='rounded'>{value}</Icon>
+                     {value} {valueOne}
 
 
 
