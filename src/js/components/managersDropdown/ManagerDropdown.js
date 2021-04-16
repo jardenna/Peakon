@@ -32,9 +32,9 @@ const Index = () => {
       const emailAttributes = managers.included && managers.included.find(include => include.id === searchIdString).attributes;
 
       const { id } = manager;
-      let { firstName, lastName, name } = manager.attributes;
+      const { name } = manager.attributes;
       const { email } = emailAttributes;
-      const managerObj = { id, firstName, lastName, email, name };
+      const managerObj = { id, email, name };
 
       return (
          managerObj
@@ -42,9 +42,13 @@ const Index = () => {
    });
 
    const managerOptions = newManagerArray && newManagerArray.map(elm => {
-      let b = elm.name === 'New Manager' ? CONTENT.newManager : elm.name;
+      const b = elm.name === 'New Manager' ? CONTENT.newManager : elm.name;
+      const managersInitials = elm.name.match(/\b(\w)/g).join('');
+
+
+      const icon = managersInitials;
       return (
-         { value: b, valueOne: elm.email }
+         { value: b, email: elm.email, icon }
       );
    });
 
@@ -52,11 +56,12 @@ const Index = () => {
 
    return (
       <main className="container manager-container">
-         <form >
+         <form>
 
             <Selectbox
                placeholder={CONTENT.chooseManager}
                options={managerOptions}
+               notFound={CONTENT.noManagerFound}
                name="managers"
                label={CONTENT.manager}
                input

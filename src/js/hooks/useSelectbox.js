@@ -212,9 +212,11 @@ function useSelectbox(options, multiple, placeholder, input, callBack = () => { 
 
    const emptySearch = (e) => {
       e.stopPropagation();
+      e.preventDefault();
       setInputChanged(false);
       setFocusedValue(-1);
       setInputValue('');
+      setSelectValues([]);
       setIsOpen(false);
    };
 

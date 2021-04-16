@@ -4,7 +4,7 @@ import Options from '@formElements/SelectBox/Options';
 import Values from '@formElements/SelectBox/Values';
 import useSelectbox from '@hooks/useSelectbox';
 
-function SelectBox({ options, label, multiple, placeholder, zIndex, callBack, input }) {
+function SelectBox({ options, label, multiple, placeholder, zIndex, callBack, input, notFound }) {
 
    const [onBlur,
       onKeyDown,
@@ -19,7 +19,7 @@ function SelectBox({ options, label, multiple, placeholder, zIndex, callBack, in
       filteredOptions,
       emptySearch] = useSelectbox(options, multiple, placeholder, input, callBack);
 
-
+   console.log(selectValues);
 
    return (
       <div>
@@ -38,8 +38,9 @@ function SelectBox({ options, label, multiple, placeholder, zIndex, callBack, in
                {
                   input ?
                      <div>
-                        <span onClick={emptySearch}>X</span>
+
                         <input type="text" onChange={onInputChange} value={inputValue} />
+                        {selectValues.length !== 0 && <button className="icon-x" onClick={emptySearch} />}
                      </div>
 
                      :
@@ -62,6 +63,7 @@ function SelectBox({ options, label, multiple, placeholder, zIndex, callBack, in
                isOpen={isOpen}
                focusedValue={focusedValue}
                onClickOption={onClickOption}
+               notFound={notFound}
             />
          </section>
       </div>

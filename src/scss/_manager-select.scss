@@ -24,9 +24,34 @@
   }
 
   .option {
-    padding: 20px;
+    margin-bottom: 10px;
     max-height: 80px;
     border: 0;
+    align-items: center;
+    display: flex;
+  }
+
+  .option-content {
+    margin-left: 30px;
+  }
+
+  .ancher {
+    display: block;
+  }
+
+  .ancher-primary {
+    color: lightgrey;
+    text-decoration: none;
+  }
+
+  .option-container {
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    align-items: center;
+
+
   }
 }
 

@@ -1,9 +1,11 @@
 import React from 'react';
 
-import Icon from '@components/Icon';
-import { CONTENT } from '@common/constants/managerContent';
+import Icon from '@commonReact/Icon';
+import Link from '@commonReact/Link';
+import NotFound from '@commonReact/NotFound';
 
-function Options({ multiple, isOpen, values, focusedValue, onClickOption, filteredOptions }) {
+
+function Options({ multiple, isOpen, values, focusedValue, onClickOption, filteredOptions, notFound }) {
 
    if (!isOpen) {
       return null;
@@ -11,9 +13,9 @@ function Options({ multiple, isOpen, values, focusedValue, onClickOption, filter
    return (
       <ul className="options" role='listbox'>
 
-         {filteredOptions.length === 0 ? CONTENT.noManagerFound : filteredOptions.map(
+         {filteredOptions.length === 0 ? <NotFound> {notFound}</NotFound> : filteredOptions.map(
             (option, index) => {
-               const { value, valueOne } = option;
+               const { value, email, icon } = option;
                const selected = values.includes(value);
                let className = 'option';
                if (selected) className += ' selected';
@@ -31,8 +33,23 @@ function Options({ multiple, isOpen, values, focusedValue, onClickOption, filter
                         <span className={`checkbox ${selected ? 'icon-checkmark' : null}`} />
                      }
 
-                     <Icon size={32} variant="primary" shape='rounded'>{value}</Icon>
-                     {value} {valueOne}
+                     <div className="option-container">
+                        {icon && <Icon size={50} variant="primary" shape='rounded'>{icon}</Icon>}
+                        <div className="option-content">
+                           {value}
+                           {email && <Link
+                              mailto={'mailto'}
+                              link={email}
+                              variant={'primary'}
+                           >{email}
+                           </Link>}
+
+                        </div>
+                     </div>
+
+
+
+
 
 
 

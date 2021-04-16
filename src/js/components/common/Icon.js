@@ -1,8 +1,8 @@
-import React from 'react';
+
 import PropTypes from 'prop-types';
 
 function Icon({ size, children, className, style, variant, shape }) {
-   const defaultStyles = { display: 'inline-block', verticalAlign: 'middle', width: size, height: size };
+   const defaultStyles = { display: 'flex', justifyContent: 'center', alignItems: 'center', width: size, height: size };
    const styles = { ...defaultStyles, ...style };
 
 

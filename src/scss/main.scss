@@ -9,7 +9,7 @@
 
 body {
   margin: 0;
-  font-size: 13px;
+  font-size: 15px;
   font-family: $font-primary;
   font-weight: 500;
   line-height: 20px;
@@ -133,6 +133,10 @@ img {
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+
+.not-found-container {
+  padding: 20px;
 }
 
 .hidden {
