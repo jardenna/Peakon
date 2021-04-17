@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { CONTENT } from '@common/constants/content';
+//import { CONTENT } from '@common/constants/content';
 
-function Error() {
+function Error({ children }) {
    return (
       <div>
-         {CONTENT.error}
+         {children}
       </div>
    );
 }

@@ -17,7 +17,7 @@ export default (state, action) => {
          return {
             ...state,
             loading: false,
-            error: action.payload
+            error: 'Something went wrong'
          };
       case FETCH_SUCCESS:
          return {

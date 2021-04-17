@@ -1,5 +1,4 @@
 .manager-container {
-
   input {
     border: none;
     margin: 0;
@@ -19,18 +18,6 @@
     border-radius: 10px;
   }
 
-  .options {
-    margin-top: 10px;
-  }
-
-  .option {
-    margin-bottom: 10px;
-    max-height: 80px;
-    border: 0;
-    align-items: center;
-    display: flex;
-  }
-
   .option-content {
     margin-left: 30px;
   }
@@ -45,67 +32,16 @@
   }
 
   .option-container {
-    padding: 20px;
+    padding: 7px 20px;
     display: flex;
     width: 100%;
     border-bottom: 1px solid #ddd;
     align-items: center;
-
-
   }
-}
 
+  .option {
 
-.manager-select-wrapper {
-  border: 1px solid gray;
-  border-radius: 10px;
-  background: #fff;
-
-  h2 {
-    font-weight: 400;
-    margin: 0 0 10px;
+    align-items: center;
+    display: flex;
   }
-}
-
-.manager-select {
-  background-color: gray;
-  padding: 20px;
-  max-width: 800px;
-  margin: 0 auto;
-
-  form {
-    margin-bottom: 10px;
-  }
-}
-
-.manager-select-options {
-  padding: 20px;
-
-  &:focus {
-    background-color: red;
-  }
-}
-
-a.manager-select-mail {
-  color: lightgrey;
-  text-decoration: none;
-}
-
-.manager-select-icon {
-  display: inline-block;
-  color: #fff;
-  background-color: blueviolet;
-  padding: 20px;
-  border-radius: 9px;
-  margin-right: 20px;
-  vertical-align: top;
-}
-
-.manager-select-info {
-  border-bottom: 1px solid gray;
-  padding-bottom: 20px;
-}
-
-.manager-select-name {
-  display: inline-block;
 }

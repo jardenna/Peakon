@@ -2,9 +2,18 @@ import React from 'react';
 
 import Options from '@formElements/SelectBox/Options';
 import Values from '@formElements/SelectBox/Values';
-import useSelectbox from '@hooks/useSelectbox';
+import Context from '@context/managers/context';
+import Loader from '@commonReact/Loader';
+import Error from '@commonReact/Error';
 
-function SelectBox({ options, label, multiple, placeholder, zIndex, callBack, input, notFound }) {
+
+
+import useSelectbox from '@hooks/useSelectbox';
+import { CONTENT } from '../../../../common/constants/managerContent';
+
+
+
+function SelectBox({ options, label, multiple, placeholder, zIndex, callBack, input, notFound, inputIdentifer }) {
 
    const [onBlur,
       onKeyDown,
@@ -19,7 +28,10 @@ function SelectBox({ options, label, multiple, placeholder, zIndex, callBack, in
       filteredOptions,
       emptySearch] = useSelectbox(options, multiple, placeholder, input, callBack);
 
-   console.log(selectValues);
+   const context = React.useContext(Context);
+   const { loading, error } = context;
+
+   const hasError = error.length > 0;
 
    return (
       <div>
@@ -33,16 +45,19 @@ function SelectBox({ options, label, multiple, placeholder, zIndex, callBack, in
 
          >
 
-            <label className="label">{label}</label>
+            <label className="label" id={inputIdentifer}>{label}</label>
             <div className="selection" onClick={onClick}>
                {
                   input ?
                      <div>
+                        <input type="text" onChange={onInputChange} value={inputValue} name={inputIdentifer} aria-label={inputIdentifer} />
+                        {selectValues.length !== 0 &&
+                           <button className="icon-x" onClick={emptySearch}>
+                              <span className="sr-only">   {CONTENT.clearAll}</span>
 
-                        <input type="text" onChange={onInputChange} value={inputValue} />
-                        {selectValues.length !== 0 && <button className="icon-x" onClick={emptySearch} />}
+                           </button>
+                        }
                      </div>
-
                      :
                      <Values
                         placeholder={placeholder}
@@ -56,7 +71,7 @@ function SelectBox({ options, label, multiple, placeholder, zIndex, callBack, in
                <span className={`chevron ${isOpen ? 'chevron-up' : 'chevron-down'}`} />
 
             </div>
-            <Options
+            {loading ? <Loader /> : <Options
                filteredOptions={filteredOptions}
                multiple={multiple}
                values={selectValues}
@@ -64,7 +79,11 @@ function SelectBox({ options, label, multiple, placeholder, zIndex, callBack, in
                focusedValue={focusedValue}
                onClickOption={onClickOption}
                notFound={notFound}
-            />
+            />}
+            {hasError &&
+               <Error>{error}</Error>
+
+            }
          </section>
       </div>
 

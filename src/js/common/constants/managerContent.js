@@ -4,5 +4,5 @@ export const CONTENT = {
    noManagerFound: 'Sorry, no managers were found with that name',
    newManager: 'Name comming soon',
    error: 'Error',
-   clearAll: 'Clear all'
+   clearAll: 'Clear filter'
 };

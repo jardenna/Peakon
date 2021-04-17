@@ -13,31 +13,28 @@ function useSelectbox(options, multiple, placeholder, input, callBack = () => { 
    const [inputValue, setInputValue] = React.useState('');
    const [inputChanged, setInputChanged] = React.useState(false);
 
-
-
-
    useTimeout(() => setTyped(''), 1000, typed);
 
    const onBlur = () => {
-
-      // if (inputValue === '') {
-      //    setIsOpen(false);
-      // }
+      //setIsOpen(false);
+      if (inputChanged) {
+         setIsOpen(true);
+      }
 
       if (multiple) {
          setFocusedValue(-1);
 
       }
-      //else {
-      //    const value = selectValues[0];
-      //    if (value) {
-      //       setFocusedValue(options.findIndex(option => option.value === value));
-      //    }
+      else {
+         const value = selectValues[0];
+         if (value) {
+            setFocusedValue(options.findIndex(option => option.value === value));
+         }
 
-      //    return (
-      //       focusedValue
-      //    );
-      //}
+         return (
+            focusedValue
+         );
+      }
    };
 
 

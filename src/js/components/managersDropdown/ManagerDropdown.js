@@ -3,21 +3,20 @@ import React from 'react';
 import { CONTENT } from '@common/constants/managerContent';
 import Context from '@context/managers/context';
 
-
 import Selectbox from '@formElements/Selectbox/Selectbox';
 
 
 const Index = () => {
    const context = React.useContext(Context);
 
-   const { users, loading, error } = context;
+   const { users } = context;
 
 
    React.useEffect(() => {
       context.getManagers();
    }, []);
 
-   const managers = context.users;
+   const managers = users;
 
    const newManagerArray = managers.data && managers.data.map(manager => {
       //In order to find a conneced Id between managers.data and  manager.included
@@ -64,6 +63,7 @@ const Index = () => {
                notFound={CONTENT.noManagerFound}
                name="managers"
                label={CONTENT.manager}
+               inputIdentifer={CONTENT.chooseManager}
                input
             />
          </form>
